@@ -1,7 +1,7 @@
 <?php
 	require("config.php");
 	#keeps users from requesting any file they want
-	$safe_pages = array("login", "dashboard");
+	$safe_pages = array("login", "dashboard", "list", "top");
 
 	if(in_array($requestedPage, $safe_pages)) {
 	  include($requestedPage.".php");

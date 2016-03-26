@@ -10,7 +10,6 @@
 <head>
     <title>TA Helper</title>
     <link rel="stylesheet" type="text/css" href="public/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="public/assets/css/style.css">
 </head>
 
@@ -24,14 +23,14 @@
 		<div class="row">
 			<ul class="nav navbar-nav navbar-center">
 				<li role="presentation" class="active"><a href="#">Home</a></li>
-				<li role="presentation"><a href="#">List</a></li>
-				<li role="presentation"><a href="#">Top 10</a></li>
+				<li role="presentation"><a href="./list">List</a></li>
+				<li role="presentation"><a href="./top">Top 10</a></li>
 			</ul>
 		</div>
 	</div>
 </nav>
 
-<body class="dashboard">
+<body id="dashboard">
 	<div class="container">
 
 		<div class="row">
@@ -80,8 +79,6 @@
 	</div><!-- end container -->
 	<script src="//code.jquery.com/jquery.min.js"></script>
     <script src="public/assets/js/bootstrap.min.js"></script>
-    <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
-    <!-- <script src="public/assets/js/bootstrap3-typeahead.js"></script> -->
     <script src="public/assets/js/typeahead.bundle.js"></script>
     <script src="public/assets/js/script.js"></script>
 </body>

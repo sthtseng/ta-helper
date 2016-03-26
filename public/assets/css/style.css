@@ -23,6 +23,7 @@ body {
     text-align: center;
 }
 
+/*Profile hovercard styling customization*/
 body .card.hovercard {
   background-color: rgba(216, 223, 224, 0.6);
   margin-top: 0;
@@ -38,6 +39,7 @@ body .card.hovercard .info .desc {
   line-height: 21px;
 }
 
+/*Search Functionality Toggle nav*/
 .nav-tabs.nav-justified.form-function > li > a{
   border-radius: 0;
   border-bottom: none;
@@ -55,10 +57,6 @@ body .card.hovercard .info .desc {
   border-bottom: none;
 }
 
-/*.form-function li:not(:first-child) a{
-  border-left: 1px solid rgb(249, 249, 249);
-}*/
-
 #search-student {
   margin: 0 20px;
   padding-top: 20px;
@@ -67,6 +65,12 @@ body .card.hovercard .info .desc {
 .student .title {
   color: #2F5575;
   text-transform: capitalize;
+}
+
+
+/*List Page*/
+#students-list.table-hover>tbody>tr:hover {
+    background-color: #EAEAEA;
 }
 
 
