@@ -77,7 +77,8 @@
 		</div>
 
 	</div><!-- end container -->
-	<script src="//code.jquery.com/jquery.min.js"></script>
+	<!-- <script src="//code.jquery.com/jquery.min.js"></script> -->
+	<script src="public/assets/js/jquery.min.js"></script>
     <script src="public/assets/js/bootstrap.min.js"></script>
     <script src="public/assets/js/typeahead.bundle.js"></script>
     <script src="public/assets/js/script.js"></script>

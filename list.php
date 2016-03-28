@@ -67,7 +67,6 @@
 	<script src="//code.jquery.com/jquery.min.js"></script>
     <script src="public/assets/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/t/bs/dt-1.10.11,r-2.0.2/datatables.min.js"></script>
-    <!-- <script src="public/assets/js/bootstrap3-typeahead.js"></script> -->
     <script src="public/assets/js/typeahead.bundle.js"></script>
     <script src="public/assets/js/script.js"></script>
 </body>

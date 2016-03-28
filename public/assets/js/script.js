@@ -31,25 +31,48 @@ $(function(){
 			// trigger autocomplete of typeahead before submit
 			$('form#search-student').submit(function(ev) {
 		        ev.preventDefault();
+				$(".desc").css({fontWeight:400, color:"#737373"}); //reset font from P/A
+
 		        if($(".form-function > li#search-student").hasClass("active")) {
 			        $.post("getstudents.php",{ function:"search", name: $(this).find("input[name='name']").val() }).done(function( data ) {
+
 			        	var student = $.parseJSON(data);
 			        	printStudentInfo(student);
 		       		});
 
 		        } else if($(".form-function > li#record-participation").hasClass("active")) {
 			        $.post("getstudents.php",{ function:"participation", name: $(this).find("input[name='name']").val() }).done(function( data ) {
+
 			        	var student = $.parseJSON(data);
 			        	printStudentInfo(student);
+
+			        	updateNewInfo($(".student .participation"));
 			        	//time out then add participation
+			        	// setTimeout(function(){
+			        	// 	$(".student .participation").text(parseInt($(".student .participation").text())+1).closest(".desc").css({fontWeight: 700, color: "#4A8056"});
+			        	// },700)
 		       		});
 
 		        } else if($(".form-function > li#record-absence").hasClass("active")) {
-		        	console.log('posting to absence')
 			        $.post("getstudents.php",{ function:"absence", name: $(this).find("input[name='name']").val() }).done(function( data ) {
+
 			        	var student = $.parseJSON(data);
 			        	printStudentInfo(student);
-			        	//time out then add absence
+
+			        	updateNewInfo($(".student .absence"));
+
+			        	// $(".student .absence").closest(".desc").fadeOut(500, function(){
+			        	// 	$(".student .absence").text(parseInt($(".student .absence").text())+1);
+				        // 	$(this).css({fontWeight: 600, color: "#4A8056"});
+			        	// 	$(this).fadeIn(400);
+			        	// });
+
+			        	// .text(parseInt($(".student .absence").text())+1).closest(".desc").css({fontWeight: 700, color: "#4A8056"});
+			        	// //time out then add absence
+			        	// setTimeout(function(){
+
+			        	// 	$(".student .absence").text(parseInt($(".student .absence").text())+1).closest(".desc").css("font-weight", 700);
+			        	// },700)
 		       		});
 		        } 
 		    });
@@ -83,7 +106,14 @@ $(function(){
 	        	$(".student .absence").html(student.absence);
 
 	        	$('#bloodhound .typeahead').typeahead('close').typeahead('val', "");
-	        	console.log(student);
+	        	// console.log(student);
+		    }
+		    function updateNewInfo(updatedField) {
+		    	updatedField.closest(".desc").fadeOut(500, function(){
+	        		updatedField.text(parseInt(updatedField.text())+1);
+		        	$(this).css({fontWeight: 600, color: "#4A8056"});
+	        		$(this).fadeIn(400);
+	        	});
 		    }
 		}
 
