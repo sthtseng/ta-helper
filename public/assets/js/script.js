@@ -47,10 +47,6 @@ $(function(){
 			        	printStudentInfo(student);
 
 			        	updateNewInfo($(".student .participation"));
-			        	//time out then add participation
-			        	// setTimeout(function(){
-			        	// 	$(".student .participation").text(parseInt($(".student .participation").text())+1).closest(".desc").css({fontWeight: 700, color: "#4A8056"});
-			        	// },700)
 		       		});
 
 		        } else if($(".form-function > li#record-absence").hasClass("active")) {
@@ -60,19 +56,6 @@ $(function(){
 			        	printStudentInfo(student);
 
 			        	updateNewInfo($(".student .absence"));
-
-			        	// $(".student .absence").closest(".desc").fadeOut(500, function(){
-			        	// 	$(".student .absence").text(parseInt($(".student .absence").text())+1);
-				        // 	$(this).css({fontWeight: 600, color: "#4A8056"});
-			        	// 	$(this).fadeIn(400);
-			        	// });
-
-			        	// .text(parseInt($(".student .absence").text())+1).closest(".desc").css({fontWeight: 700, color: "#4A8056"});
-			        	// //time out then add absence
-			        	// setTimeout(function(){
-
-			        	// 	$(".student .absence").text(parseInt($(".student .absence").text())+1).closest(".desc").css("font-weight", 700);
-			        	// },700)
 		       		});
 		        } 
 		    });
@@ -102,6 +85,7 @@ $(function(){
 	        	$(".student .title").html(student.name.toLowerCase()); //text transform in css
 	        	$(".student .id").html(student.id.toUpperCase());
 	        	$(".student .email").html(student.email);
+	        	$(".student .group").html(student.group);
 	        	$(".student .participation").html(student.participation);
 	        	$(".student .absence").html(student.absence);
 
@@ -111,7 +95,11 @@ $(function(){
 		    function updateNewInfo(updatedField) {
 		    	updatedField.closest(".desc").fadeOut(500, function(){
 	        		updatedField.text(parseInt(updatedField.text())+1);
-		        	$(this).css({fontWeight: 600, color: "#4A8056"});
+	        		if(updatedField.hasClass("participation")) {
+		        		$(this).css({fontWeight: 600, color: "#4A8056"});
+	        		} else {
+		        		$(this).css({fontWeight: 600, color: "#B34857"});
+	        		}
 	        		$(this).fadeIn(400);
 	        	});
 		    }

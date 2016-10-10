@@ -8,7 +8,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>TA Helper</title>
+    <title>Dashboard | TA Helper</title>
     <link rel="stylesheet" type="text/css" href="public/assets/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="public/assets/css/style.css">
 </head>
@@ -67,6 +67,7 @@
 				            <div class="title">GMBA7061 Student</div>
 				            <div class="desc"><span class="id">Student ID</span></div>
 				            <div class="desc"><span class="email">Student Email</span></div>
+				            <div class="desc">Group Number: <span class="group"></span></div>
 				            <div class="desc">Participation: <span class="participation"></span></div>
 				            <div class="desc">Absence: <span class="absence"></span></div>
 				        </div>
@@ -77,7 +78,7 @@
 		</div>
 
 	</div><!-- end container -->
-	<!-- <script src="//code.jquery.com/jquery.min.js"></script> -->
+	<!-- <script src="//code.jquery.com/jquery.min.map"></script> -->
 	<script src="public/assets/js/jquery.min.js"></script>
     <script src="public/assets/js/bootstrap.min.js"></script>
     <script src="public/assets/js/typeahead.bundle.js"></script>

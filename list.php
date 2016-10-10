@@ -1,14 +1,15 @@
 <?php 
   require("security.php");
 
-	$students = $conn->query("SELECT * FROM ta_students");
+	$students = $conn->query("SELECT * FROM ta_students as s
+							ORDER BY s.group ASC, s.name ASC");
 
 
 ?>
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>TA Helper</title>
+    <title>List | TA Helper</title>
     <link rel="stylesheet" type="text/css" href="public/assets/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/t/bs/dt-1.10.11,r-2.0.2/datatables.min.css"/>
     <link rel="stylesheet" type="text/css" href="public/assets/css/style.css">
@@ -35,14 +36,15 @@
 	<div class="container">
 
 		<div class="row">
-			<table id="students-list" class="table table-hover display nowrap" width="100%" data-order='[[ 1, "asc" ]]'>
+			<table id="students-list" class="table table-hover display nowrap" width="100%" data-order='[[ 3, "asc" ],[ 1, "asc" ]]'>
 				<thead>
 					<tr>
 						<th>ID</th>
 						<th data-priority="1">Name</th>
 						<th>Email</th>
-						<th data-priority="2">Participation</th>
-						<th data-priority="3">Absence</th>
+						<th data-priority="2">Group</th>
+						<th data-priority="3">Participation</th>
+						<th data-priority="4">Absence</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -52,6 +54,7 @@
 			    	<td>'.$row["id"]. '</td>
 			    	<td>'.$row["name"]. '</td>
 			    	<td>'.$row["email"]. '</td>
+			    	<td>'.$row["group"]. '</td>
 			    	<td>'.$row["participation"]. '</td>
 			    	<td>'.$row["absence"]. '</td></tr>';
 			    }
