@@ -5,6 +5,7 @@ require("config.php");
 if( $_REQUEST["name"])
 {
 	$studentName = $_REQUEST["name"];
+	$classID = $_REQUEST["classID"];
 	$queryOutput = $conn->query("SELECT * FROM ta_students AS s
 				WHERE s.name='".$studentName."'");
 	$student = $queryOutput->fetch_assoc();
@@ -14,14 +15,14 @@ if( $_REQUEST["name"])
 
 		$conn->query("UPDATE ta_students AS s
 				SET s.participation=".$participation."
-				WHERE s.name='".$studentName."'");
+				WHERE s.name='".$studentName."' AND s.classID='".$classID."'");
 
 	} else if($_REQUEST["function"] == "absence") {
 		$absence = intval($student["absence"])+1;
 
 		$conn->query("UPDATE ta_students AS s
 				SET s.absence=".$absence."
-				WHERE s.name='".$studentName."'");
+				WHERE s.name='".$studentName."' AND s.classID='".$classID."'");
 	}
 
 
@@ -30,7 +31,8 @@ if( $_REQUEST["name"])
 
 } else if($_REQUEST["allStudents"]) {
 
-	$queryOutput = $conn->query("SELECT * FROM ta_students");
+	$classID = $_REQUEST["classID"];
+	$queryOutput = $conn->query("SELECT * FROM ta_students WHERE classID=".$classID);
 
 	$outputArray = array();
 

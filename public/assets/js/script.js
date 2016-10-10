@@ -6,7 +6,7 @@ $(function(){
 		if($("#dashboard").length) {
 
 			// Initialize Bloodhound and Typeahead
-			$.post("getstudents.php",{ allStudents: true }).done(function( data ) {
+			$.post("getstudents.php",{ allStudents: true, classID: $("#currentClass").attr("classID") }).done(function( data ) {
 				var studentNames = $.parseJSON(data);
 
 
@@ -34,14 +34,16 @@ $(function(){
 				$(".desc").css({fontWeight:400, color:"#737373"}); //reset font from P/A
 
 		        if($(".form-function > li#search-student").hasClass("active")) {
-			        $.post("getstudents.php",{ function:"search", name: $(this).find("input[name='name']").val() }).done(function( data ) {
+			        $.post("getstudents.php",{ function:"search", name: $(this).find("input[name='name']").val(), 
+			        	classID: $("#currentClass").attr("classID") }).done(function( data ) {
 
 			        	var student = $.parseJSON(data);
 			        	printStudentInfo(student);
 		       		});
 
 		        } else if($(".form-function > li#record-participation").hasClass("active")) {
-			        $.post("getstudents.php",{ function:"participation", name: $(this).find("input[name='name']").val() }).done(function( data ) {
+			        $.post("getstudents.php",{ function:"participation", name: $(this).find("input[name='name']").val(), 
+			        	classID: $("#currentClass").attr("classID") }).done(function( data ) {
 
 			        	var student = $.parseJSON(data);
 			        	printStudentInfo(student);
@@ -50,7 +52,8 @@ $(function(){
 		       		});
 
 		        } else if($(".form-function > li#record-absence").hasClass("active")) {
-			        $.post("getstudents.php",{ function:"absence", name: $(this).find("input[name='name']").val() }).done(function( data ) {
+			        $.post("getstudents.php",{ function:"absence", name: $(this).find("input[name='name']").val(), 
+			        	classID: $("#currentClass").attr("classID") }).done(function( data ) {
 
 			        	var student = $.parseJSON(data);
 			        	printStudentInfo(student);

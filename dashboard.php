@@ -1,6 +1,9 @@
 <?php 
     require("security.php");
 
+    $currentClass = $conn->query("SELECT * FROM ta_class WHERE id='".$_SESSION['user']['lastViewedClassID']."'")->fetch_assoc();
+	$classes = $conn->query("SELECT * FROM ta_class WHERE userID='".$_SESSION['user']['userID']."'");
+	//$classes = $queryOutput->fetch_assoc();
 	$students = $conn->query("SELECT * FROM ta_students");
 
 
@@ -21,10 +24,24 @@
 		</div>
 
 		<div class="row">
-			<ul class="nav navbar-nav navbar-center">
+			<ul class="nav navbar-nav navbar-right">
 				<li role="presentation" class="active"><a href="#">Home</a></li>
 				<li role="presentation"><a href="./list">List</a></li>
-				<li role="presentation"><a href="./top">Top 10</a></li>
+				<!-- <li role="presentation"><a href="./top">Top 10</a></li> -->
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" id="currentClass" 
+						classID=<? print $currentClass["id"]?> data-toggle="dropdown" 
+						role="button" aria-haspopup="true" aria-expanded="false">
+						<? print $currentClass["name"]?> <span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<?php 
+							while($row = $classes->fetch_assoc()) {
+								print '<li><a href="#">'.$row["name"].'</a></li>';
+							}
+						?>
+					</ul>
+				</li>
 			</ul>
 		</div>
 	</div>
@@ -64,7 +81,7 @@
 				            <img alt="" src="public/assets/img/placeholder.jpg">
 				        </div>
 				        <div class="info">
-				            <div class="title">GMBA7061 Student</div>
+				            <div class="title"><? print $currentClass["name"]?> Student</div>
 				            <div class="desc"><span class="id">Student ID</span></div>
 				            <div class="desc"><span class="email">Student Email</span></div>
 				            <div class="desc">Group Number: <span class="group"></span></div>
