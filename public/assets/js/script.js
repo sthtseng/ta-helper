@@ -82,11 +82,11 @@ $(function(){
 		    });
 
 		    function printStudentInfo(student){
-		        var imgPath = "public/assets/img/students/"+student.id+".jpg";
+		        var imgPath = "public/assets/img/students/"+student.studentID+".jpg";
 
 				$(".student .avatar > img").attr("src", imgPath);
 	        	$(".student .title").html(student.name.toLowerCase()); //text transform in css
-	        	$(".student .id").html(student.id.toUpperCase());
+	        	$(".student .id").html(student.studentID.toUpperCase());
 	        	$(".student .email").html(student.email);
 	        	$(".student .group").html(student.group);
 	        	$(".student .participation").html(student.participation);

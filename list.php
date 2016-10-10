@@ -50,8 +50,8 @@
 				<tbody>
 					<?php
 					while($row = $students->fetch_assoc()) {
-			    	echo '<tr data-id="'.$row["id"].'">
-			    	<td>'.$row["id"]. '</td>
+			    	echo '<tr data-id="'.$row["studentID"].'">
+			    	<td>'.$row["studentID"]. '</td>
 			    	<td>'.$row["name"]. '</td>
 			    	<td>'.$row["email"]. '</td>
 			    	<td>'.$row["group"]. '</td>
