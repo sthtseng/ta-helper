@@ -7,7 +7,7 @@ if( $_REQUEST["name"])
 	$studentName = $_REQUEST["name"];
 	$classID = $_REQUEST["classID"];
 	$queryOutput = $conn->query("SELECT * FROM ta_students AS s
-				WHERE s.name='".$studentName."'");
+				WHERE s.name='".$studentName."' AND s.classID='".$classID."'");
 	$student = $queryOutput->fetch_assoc();
 
 	if($_REQUEST["function"] == "participation") {

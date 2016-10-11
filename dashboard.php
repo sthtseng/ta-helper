@@ -27,7 +27,7 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li role="presentation" class="active"><a href="#">Home</a></li>
 				<li role="presentation"><a href="./list">List</a></li>
-				<!-- <li role="presentation"><a href="./top">Top 10</a></li> -->
+				<li role="presentation"><a href="./photos">Photos</a></li>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" id="currentClass" 
 						classID=<? print $currentClass["id"]?> data-toggle="dropdown" 

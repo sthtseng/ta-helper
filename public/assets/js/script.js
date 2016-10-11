@@ -82,7 +82,7 @@ $(function(){
 		    });
 
 		    function printStudentInfo(student){
-		        var imgPath = "public/assets/img/students/"+student.studentID+".jpg";
+		        var imgPath = "public/assets/img/students/"+student.classID+"/"+student.studentID+".jpg";
 
 				$(".student .avatar > img").attr("src", imgPath);
 	        	$(".student .title").html(student.name.toLowerCase()); //text transform in css
