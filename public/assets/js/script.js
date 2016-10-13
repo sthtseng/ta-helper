@@ -63,6 +63,7 @@ $(function(){
 		        } 
 		    });
 
+			//change to placeholder when detect missing picture
 		    $(".student .avatar > img").error(function(){
 		        $(this).attr('src', 'public/assets/img/placeholder.jpg');
 		    });
@@ -116,6 +117,34 @@ $(function(){
 			    searching: false,
 			    paging: false
 			} );
+	    }
+
+	    // Photos page
+	    if($("#photos").length) {
+	    	$('.grid').masonry({
+			  // options
+			  itemSelector: '.grid-item',
+			  columnWidth: 200
+			});
+
+	    	//change to placeholder when detect missing picture
+		    $(".grid-item > img").error(function(){
+		        $(this).attr('src', 'public/assets/img/placeholder.jpg');
+		    });
+	    }
+	});
+
+	$(window).on("load", function() {
+
+		// Photos page
+	    if($("#photos").length) {
+	    	setTimeout( function() {
+	    		$('.grid').masonry({
+					// options
+					itemSelector: '.grid-item',
+					columnWidth: 200
+				});
+			} , 300);
 	    }
 
 	});

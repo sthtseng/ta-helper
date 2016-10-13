@@ -3,8 +3,7 @@
 
     $currentClass = $conn->query("SELECT * FROM ta_class WHERE id='".$_SESSION['user']['lastViewedClassID']."'")->fetch_assoc();
 	$classes = $conn->query("SELECT * FROM ta_class WHERE userID='".$_SESSION['user']['userID']."'");
-	//$classes = $queryOutput->fetch_assoc();
-	$students = $conn->query("SELECT * FROM ta_students");
+	$students = $conn->query("SELECT * FROM ta_students WHERE classID='".$_SESSION['user']['lastViewedClassID']."'");
 
 
 ?>
@@ -47,11 +46,23 @@
 	</div>
 </nav>
 
-<body id="dashboard">
+<body id="photos">
 	<div class="container">
 
 		<div class="row">
+			<div class="grid">
 			
+				<?php 
+					while($row = $students->fetch_assoc()) {
+						$output = '<div class="grid-item">';
+						$output .= '<img alt="" src="public/assets/img/students/'.$currentClass["id"].'/'.$row['studentID'].'.jpg">';
+						$output .= '<div class="title">'.$row["name"].'</div>';
+						$output .= "</div>";
+						print $output;
+						//'<div class="col-lg-2 col-md-3 col-sm-6"><img alt="" src="public/assets/img/students/'.$currentClass["id"].'/'.$row['studentID'].'.jpg"></div>';
+					}
+				?>
+			</div>
 		</div>
 
 	</div><!-- end container -->
@@ -60,5 +71,6 @@
     <script src="public/assets/js/bootstrap.min.js"></script>
     <script src="public/assets/js/typeahead.bundle.js"></script>
     <script src="public/assets/js/script.js"></script>
+    <script src="public/assets/js/masonry.pkgd.min.js"></script>
 </body>
 </html>

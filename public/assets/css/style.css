@@ -412,3 +412,10 @@ span.twitter-typeahead {
     padding: 0 20px;
     margin-bottom: 17px;
 }
+
+
+// Pictures page
+.grid-item { width: 125px; }
+.grid-item .title {
+  margin-bottom: 30px;
+}
