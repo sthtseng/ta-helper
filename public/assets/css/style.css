@@ -39,6 +39,15 @@ body .card.hovercard .info .desc {
   line-height: 21px;
 }
 
+.student .title {
+  color: #2F5575;
+  text-transform: capitalize;
+}
+
+.info .edit a {
+  color: #2F5575;
+}
+
 /*Search Functionality Toggle nav*/
 .nav-tabs.nav-justified.form-function > li > a{
   border-radius: 0;
@@ -57,15 +66,12 @@ body .card.hovercard .info .desc {
   border-bottom: none;
 }
 
-#search-student {
+#search-bar {
   margin: 0 20px;
   padding-top: 20px;
 }
 
-.student .title {
-  color: #2F5575;
-  text-transform: capitalize;
-}
+
 
 
 /*List Page*/
@@ -416,6 +422,9 @@ span.twitter-typeahead {
 
 // Pictures page
 .grid-item { width: 125px; }
-.grid-item .title {
+.grid-item .name {
+  font-size: 18px;
+}
+.grid-item .altName {
   margin-bottom: 30px;
 }

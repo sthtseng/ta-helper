@@ -1,51 +1,6 @@
 <?php 
-    require("security.php");
-
-    $currentClass = $conn->query("SELECT * FROM ta_class WHERE id='".$_SESSION['user']['lastViewedClassID']."'")->fetch_assoc();
-	$classes = $conn->query("SELECT * FROM ta_class WHERE userID='".$_SESSION['user']['userID']."'");
-	//$classes = $queryOutput->fetch_assoc();
-	$students = $conn->query("SELECT * FROM ta_students");
-
-
+    require("header.php");
 ?>
-<!DOCTYPE HTML>
-<html>
-<head>
-    <title>Dashboard | TA Helper</title>
-    <link rel="stylesheet" type="text/css" href="public/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="public/assets/css/style.css">
-</head>
-
-<nav class="navbar navbar-default navbar-fixed-top">
-	<div class="container">
-
-		<div class="row">
-			<!-- <h2 class="page-title">TA Helper Dashboard</h2> -->
-		</div>
-
-		<div class="row">
-			<ul class="nav navbar-nav navbar-right">
-				<li role="presentation" class="active"><a href="#">Home</a></li>
-				<li role="presentation"><a href="./list">List</a></li>
-				<li role="presentation"><a href="./photos">Photos</a></li>
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" id="currentClass" 
-						classID=<? print $currentClass["id"]?> data-toggle="dropdown" 
-						role="button" aria-haspopup="true" aria-expanded="false">
-						<? print $currentClass["name"]?> <span class="caret"></span>
-					</a>
-					<ul class="dropdown-menu">
-						<?php 
-							while($row = $classes->fetch_assoc()) {
-								print '<li><a href="#">'.$row["name"].'</a></li>';
-							}
-						?>
-					</ul>
-				</li>
-			</ul>
-		</div>
-	</div>
-</nav>
 
 <body id="dashboard">
 	<div class="container">
@@ -62,7 +17,7 @@
 			    <div class="card hovercard">
 			        <div class="cardheader">
 
-			        	<form id="search-student" name="searchStudents" target="_self" action="getstudents.php" method="post">
+			        	<form id="search-bar" name="searchStudents" target="_self" action="getstudents.php" method="post">
 
 									<div class="input-group input-group-lg" id="bloodhound">
 
@@ -82,17 +37,48 @@
 				        </div>
 				        <div class="info">
 				            <div class="title"><? print $currentClass["name"]?> Student</div>
+				            <div class="desc"><span class="altName">Alternative Name</span></div>
 				            <div class="desc"><span class="id">Student ID</span></div>
 				            <div class="desc"><span class="email">Student Email</span></div>
 				            <div class="desc">Group Number: <span class="group"></span></div>
 				            <div class="desc">Participation: <span class="participation"></span></div>
 				            <div class="desc">Absence: <span class="absence"></span></div>
+				            <div class="edit hidden">
+				            	<a href="#" class="edit-button" data-toggle="modal" data-target="#editModal"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+				            </div>
 				        </div>
 				      </div>
 			    </div>
 
 			</div>
 		</div>
+
+		<!-- Edit Modal -->
+			<div class="modal fade" id="editModal" role="dialog">
+				<div class="modal-dialog">
+				
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">Edit Student</h4>
+						</div>
+						<div class="modal-body student">
+							<input type="text" class="form-control title">
+							<input type="text" class="form-control altName">
+							<input type="text" class="form-control id">
+							<input type="text" class="form-control email">
+							<input type="text" class="form-control group">
+							<input type="text" class="form-control participation">
+							<input type="text" class="form-control absence">
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+				  
+				</div>
+			</div>
 
 	</div><!-- end container -->
 	<!-- <script src="//code.jquery.com/jquery.min.map"></script> -->

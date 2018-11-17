@@ -2,6 +2,17 @@ $(function(){
 
 	$(document).ready(function() {
 
+		// General
+
+		// get current page body id and modify navbar as needed
+		$('#myNavbar ul li.'+$("body").attr("id")).addClass("active").children("a").attr("href", "#");
+
+		$("#myNavbar .class-switch").click(function(){
+			$.post("switchclass.php",{ classID: $(this).attr("data-classID") }).done(function( data ) {
+				location.reload();
+			});
+		});
+
 		// Dashboard Page
 		if($("#dashboard").length) {
 
@@ -29,9 +40,10 @@ $(function(){
 			});
 
 			// trigger autocomplete of typeahead before submit
-			$('form#search-student').submit(function(ev) {
+			$('form#search-bar').submit(function(ev) {
 		        ev.preventDefault();
 				$(".desc").css({fontWeight:400, color:"#737373"}); //reset font from P/A
+				$(".student .edit").removeClass("hidden"); // show edit button
 
 		        if($(".form-function > li#search-student").hasClass("active")) {
 			        $.post("getstudents.php",{ function:"search", name: $(this).find("input[name='name']").val(), 
@@ -87,11 +99,21 @@ $(function(){
 
 				$(".student .avatar > img").attr("src", imgPath);
 	        	$(".student .title").html(student.name.toLowerCase()); //text transform in css
+	        	$(".student .altName").html(student.altName);
 	        	$(".student .id").html(student.studentID.toUpperCase());
 	        	$(".student .email").html(student.email);
 	        	$(".student .group").html(student.group);
 	        	$(".student .participation").html(student.participation);
 	        	$(".student .absence").html(student.absence);
+
+	        	// fill modal input fields
+	        	$(".modal .student input.title").val(student.name);
+	        	$(".modal .student input.altName").val(student.altName);
+	        	$(".modal .student input.id").val(student.studentID);
+	        	$(".modal .student input.email").val(student.email);
+	        	$(".modal .student input.group").val(student.group);
+	        	$(".modal .student input.participation").val(student.participation);
+	        	$(".modal .student input.absence").val(student.absence);
 
 	        	$('#bloodhound .typeahead').typeahead('close').typeahead('val', "");
 	        	// console.log(student);
@@ -107,6 +129,10 @@ $(function(){
 	        		$(this).fadeIn(400);
 	        	});
 		    }
+
+		    // $('.student .edit-button').click(function(){
+		    // 	// replace student info with form
+		    // })
 		}
 
 
@@ -129,7 +155,7 @@ $(function(){
 
 	    	//change to placeholder when detect missing picture
 		    $(".grid-item > img").error(function(){
-		        $(this).attr('src', 'public/assets/img/placeholder.jpg');
+		        $(this).attr('src', 'public/assets/img/placeholder@200.jpg');
 		    });
 	    }
 	});
@@ -144,7 +170,7 @@ $(function(){
 					itemSelector: '.grid-item',
 					columnWidth: 200
 				});
-			} , 300);
+			} , 500);
 	    }
 
 	});
